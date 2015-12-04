@@ -456,8 +456,8 @@ scene.onPointerDown = function(evt, pickResult) {
 };
 ```
 The SPS pickability is directly related to the size of its bounding box (please read 'SPS Visibility' part). So, in order to make sure your particles will be pickable, don't forget to force, at last once, the bounding box size recomputation once the particles are set in the space with `setParticles()`.  
-Pickable particle example (no update in the render loop) : http://www.babylonjs-playground.com/#2FPT1A#9  
-Pickable particle example (rotation) : http://www.babylonjs-playground.com/#2FPT1A#14  
+Pickable particle example (no SPS update in the render loop) : http://www.babylonjs-playground.com/#2FPT1A#41  
+Pickable particle example (particle rotation) : http://www.babylonjs-playground.com/#2FPT1A#14  
 
 ###SPS Visibility
 To render the meshes on the screen, BJS uses their bounding box (BBox) : if the BBox is in the frustum, then the mesh is selected to be rendered on the screen. This method is really performant as it avoids to make the GPU compute things that wouldn't be visible. The BBox of each mesh is recomputed when its World Martix is updated.    

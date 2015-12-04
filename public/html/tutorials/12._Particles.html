@@ -160,8 +160,8 @@ particleSystem.targetStopDuration = 5;
 
     Vector3.TransformCoordinatesFromFloatsToRef(randX, randY, randZ, worldMatrix, positionToUpdate);
 }
-</code></pre><p><code>customUpdateFunction: (particles: Particle[])</code>: This function can be defined to provide custom update for active particles. This function will be called instead of regular update (age, position, color, etc.). Do not forget that this function will be called on every frame so try to keep it simple and fast :). By default the following code is used:</p>
-<pre><code>updateFunction = (particles: Particle[]): void =&gt; {
+</code></pre><p><code>updateFunction: (particles: Particle[])</code>: This function can be defined to provide custom update for active particles. This function will be called instead of regular update (age, position, color, etc.). Do not forget that this function will be called on every frame so try to keep it simple and fast :). By default the following code is used:</p>
+<pre><code>updateFunction = function(particles) {
      for (var index = 0; index &lt; particles.length; index++) {
            var particle = particles[index];
            particle.age += this._scaledUpdateSpeed;

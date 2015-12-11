@@ -171,6 +171,10 @@
         {
           "title": "Position, Rotate, Translate and Spaces",
           "filename": "Position,_Rotate,_Translate_and_Spaces"
+        },
+        {
+          "title": "Creating a custom loading screen",
+          "filename": "Creating_a_custom_loading_screen"
         }
       ]
     },

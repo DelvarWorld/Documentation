@@ -43,21 +43,21 @@ sphere.material = new BABYLON.PBRMaterial("pbr", scene);
 
 That is done by setting the properties on the material. Let's see what the new PBR parameters are:
 
-* **Glossiness** (AKA specular power)
+* **MicroSurface** (AKA Glossiness or specular power)
 
-The glossiness of a material defines **the way it is reflecting** the incoming lights. It is not defining the amount, only how. A glossy material will tend to reflect the light in the same direction it is incoming. On a Matte one the reflected light will vary in contact of the surface. As I can easily understand the confusion of my explanation, let's take a look at an example (and for more Physically Based Knowledge, [follow the link](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2538579/)):
+The micro-surface of a material defines **the way it is reflecting** the incoming lights. It is not defining the amount, only how. A glossy material will tend to reflect the light in the same direction it is incoming. On a Matte one the reflected light will vary in contact of the surface. As I can easily understand the confusion of my explanation, let's take a look at an example (and for more Physically Based Knowledge, [follow the link](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2538579/)):
 
 ![Elements](/img/extensions/materials/PBRMaterialGlossiness.png)
 
 As you can see here, the more glossy the material is (going left to right: 0.5 to 1) the less blurry the reflected environment is.
 
-[**Playground Demo Scene - PBR Glossiness**](http://babylonjs-playground.com/#1LZALU#1)
+[**Playground Demo Scene - PBR Glossiness**](http://babylonjs-playground.com/#1LZALU#2)
 
 ```javascript
 var x = 0;
-var specular = 0.7;
+var reflectivity = 0.7;
 for (var j = 0; j < 6; j++) {
-	var glossiness = j / 5;
+	var microSurface = j / 5;
 		
 	//Creation of a sphere
 	var sphere = BABYLON.Mesh.CreateSphere("Sphere_" + j, 10.0, 9.0, scene);
@@ -65,9 +65,9 @@ for (var j = 0; j < 6; j++) {
 		
 	//Creation of a material
 	var materialSphere = new BABYLON.PBRMaterial("Material_" + j, scene);
-	materialSphere.diffuseColor = new BABYLON.Color3(0.2, 0.9, 1.0);
-	materialSphere.specularColor = new BABYLON.Color3(specular, specular, specular);
-	materialSphere.glossiness = glossiness;
+	materialSphere.albedoColor = new BABYLON.Color3(0.2, 0.9, 1.0);
+	materialSphere.reflectivityColor = new BABYLON.Color3(reflectivity, reflectivity, reflectivity);
+	materialSphere.microSurface = microSurface;
 
 	//Attach the material to the sphere
 	sphere.material = materialSphere;
@@ -76,27 +76,27 @@ for (var j = 0; j < 6; j++) {
 }
 ```
 
-**Tips:** To achieve the best results, you can store the glossiness in the alpha channel of the specular map (this prevents having a constant gloss on one material):
+**Tips:** To achieve the best results, you can store the glossiness in the alpha channel of the reflectivity map (this prevents having a constant gloss on one material):
 ```javascript
-materialSphere.specularTexture = texture;
-materialSphere.useGlossinessFromSpecularMap = true;
+materialSphere.reflectivityTexture = texture;
+materialSphere.useMicroSurfaceFromReflectivityMap = true;
 ```
 
-* **Specular** (AKA reflectivity)
+* **Reflectivity** (AKA specular)
 
-The specular of a material defines the **amount of light it is reflecting**. Basically, a black specular will mean almost no reflection and white will be close from a perfect mirror:
+The reflectivity of a material defines the **amount of light it is reflecting**. Basically, a black specular will mean almost no reflection and white will be close from a perfect mirror:
 
 ![Elements](/img/extensions/materials/PBRMaterialSpecular.png)
 
 As you can see here the more specular the material is (going left to right from white to black) the closer to a perfect mirror it is.
 
-[**Playground Demo Scene - PBR Specular**](http://babylonjs-playground.com/#PRRBS)
+[**Playground Demo Scene - PBR Reflectivity**](http://babylonjs-playground.com/#PRRBS#1)
 
 ```javascript
 var x = 0;
-var glossiness = 0.98;
+var microSurface = 0.98;
 for (var j = 0; j < 6; j++) {
-	var specular = j / 5;
+	var reflectivity = j / 5;
 		
 	//Creation of a sphere
 	var sphere = BABYLON.Mesh.CreateSphere("Sphere_" + j, 10.0, 9.0, scene);
@@ -104,9 +104,9 @@ for (var j = 0; j < 6; j++) {
 		
 	//Creation of a material
 	var materialSphere = new BABYLON.PBRMaterial("Material_" + j, scene);
-	materialSphere.diffuseColor = new BABYLON.Color3(0.2, 0.9, 1.0);
-	materialSphere.specularColor = new BABYLON.Color3(specular, specular, specular);
-	materialSphere.glossiness = glossiness;
+	materialSphere.albedoColor = new BABYLON.Color3(0.2, 0.9, 1.0);
+	materialSphere.reflectivityColor = new BABYLON.Color3(reflectivity, reflectivity, reflectivity);
+	materialSphere.microSurface = microSurface;
 
 	//Attach the material to the sphere
 	sphere.material = materialSphere;
@@ -131,14 +131,14 @@ pbr.reflectionColor = new BABYLON.Color3(1.0, 0.0, 0.0);
 
 **Tips:** To achieve the best results, use a reflection texture created from the new reflection probes:
 ```javascript
-pbr.specularTexture = texture;
+pbr.reflectionTexture = texture;
 ```
 
 ![Elements](/img/extensions/materials/PBRMaterialReflection.png)
 
 You can see here all the elements being lit by the reflection map. Playing with the specular color and glossiness one can also achieve interesting results as you can see on the different meshes.
 
-[**Playground Demo Scene - PBR Reflection**](http://www.babylonjs-playground.com/#1HQPOD)
+[**Playground Demo Scene - PBR Reflection**](http://www.babylonjs-playground.com/#1HQPOD#2)
 
 * **Overloaded Values**
 
@@ -148,7 +148,7 @@ In order to **simplify debugging** and also to **create animation effects**, a b
 
 As you can see, the texture is being more and more overridden by an overloaded diffuse color when the overloaded diffuse intensity increases (from left to right and 0 to 1).
 
-[**Playground Demo Scene - PBR Overloaded Values**](http://babylonjs-playground.com/#1GELZQ#1)
+[**Playground Demo Scene - PBR Overloaded Values**](http://babylonjs-playground.com/#1GELZQ#7)
 
 ```javascript
 var x = 0;
@@ -161,9 +161,9 @@ for (var j = 0; j < 6; j++) {
 		
 	//Creation of a material
 	var materialSphere = new BABYLON.PBRMaterial("Material_" + j, scene);
-	materialSphere.diffuseTexture = new BABYLON.Texture("Textures/Amiga");
-	materialSphere.overloadedDiffuse = new BABYLON.Color3(0, 0, 1);
-	materialSphere.overloadedDiffuseIntensity = overloadedIntensity;
+	materialSphere.albedoTexture = new BABYLON.Texture("Textures/Amiga");
+	materialSphere.overloadedAlbedo = new BABYLON.Color3(0, 0, 1);
+	materialSphere.overloadedAlbedoIntensity = overloadedIntensity;
 
 	//Attach the material to the sphere
 	sphere.material = materialSphere;
@@ -173,6 +173,15 @@ for (var j = 0; j < 6; j++) {
 ```
 
 All the overloaded properties are beginning by overloaded to easily find them in the PBRMaterial class.
+
+## Ligthing Intensity
+
+In order to allow finer grain control of the lighting, the following properties have been added in the material.
+
+- directIntensity: Controls the amount of diffuse and specular the material is reflecting.
+- emissiveIntensity: Controls the level of emissive light the material is emitting.
+- environmentIntensity: Controls the level of the reflected light from the environment.
+- specularIntensity: As the material is still using a blinn phong like higlights computation, this can help dropping the specular level of the material without impacting the reflectivity.
 
 ## Camera Control (In the material... WTF ?)
 
@@ -190,7 +199,7 @@ pbr.cameraContrast = 1.66;
 
 This highlights the impact of both contrast and exposure on a model (all the other parameters are fixed).
 
-[**Playground Demo Scene - PBR Camera**](http://babylonjs-playground.com/#1Y4YAM#1)
+[**Playground Demo Scene - PBR Camera**](http://babylonjs-playground.com/#1Y4YAM#2)
 
 ## Gamma Correction
 
@@ -205,3 +214,4 @@ As PBR materials are based on a good **light distribution** (close to real life 
 They are **automatically created** and configured based on the other inputs passed through the material. You then do not need to configure them hence why we removed them from the material.
 
 The emissive and opacity fresnels from tooling are still available in this material.
+

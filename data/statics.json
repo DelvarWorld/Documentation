@@ -187,7 +187,11 @@
         {
           "title": "How to create a material for the materials library",
           "filename": "How_to_create_a_material_for_materialsLibrary"
-        },              
+        }, 
+        {
+          "title": "How to create a procedural texture for the procedural textures library",
+          "filename": "How_to_create_a_proceduralTexture_for_procedutalTexturesLibrary"
+        },             
         {
           "title": "Adding Your Own Physics Engine Plugin to Babylon.js",
           "filename": "Adding_Your_Own_Physics_Engine_Plugin_to_Babylon.js"

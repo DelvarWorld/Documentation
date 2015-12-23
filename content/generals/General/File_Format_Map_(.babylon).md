@@ -412,7 +412,8 @@ A shadowGenerator is defined by the following JSON:
     "useVarianceShadowMap": boolean,
     "usePoissonSampling": boolean,
     "mapSize": int (between 64 and 2048, must be a power of 2),
-    "bias": shadow bias,
+    "bias": float,
+    "forceBackFacesOnly": float,
     "lightId": string,
     "renderList": array of string (which are IDs of meshes)
 }

@@ -546,6 +546,10 @@
         {
           "title": "Tri-Planar Mapping",
           "filename": "Tri_Planar_Mapping"
+        },
+        {
+          "title": "Gradient",
+          "filename": "Gradient"
         }
       ]
     },

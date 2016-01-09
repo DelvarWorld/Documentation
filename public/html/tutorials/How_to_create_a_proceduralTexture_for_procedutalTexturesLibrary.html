@@ -3,6 +3,7 @@
 <li><a href="#update-the-shaders">Update the shaders</a></li>
 <li><a href="#write-the-procedural-texture">Write the procedural texture</a></li>
 <li><a href="#update-the-test-page">Update the test page</a></li>
+<li><a href="#optional-enable-a-graphical-interface">(Optional) enable a graphical interface.</a></li>
 <li><a href="#launch-the-test-server">Launch the test server</a></li>
 </ul>
 </div></div><div id="staticContent"><p>This tutorial will guide you through the process of creating a procedural texture for the <a href="https://github.com/BabylonJS/Babylon.js/tree/master/proceduralTexturesLibrary">procedural textures library</a></p>
@@ -124,33 +125,42 @@ By convention we create a function named <strong>updateShaderUniforms()</strong>
 </code></pre><p>Then add the procedural texture line 192:</p>
 <pre><code>var cloudBis = new BABYLON.CloudBisProceduralTexture(&quot;cloudPTBis&quot;, 256, scene);
 </code></pre><p>Finally update the UI control:</p>
-<pre><code>gui.add(options, &#39;texture&#39;, [&#39;default&#39;, &#39;fire&#39;, &#39;wood&#39;, &#39;cloud&#39;, &#39;grass&#39;, &#39;road&#39;, &#39;brick&#39;, &#39;marble&#39;, &#39;starfield&#39;, &#39;cloudbis&#39;]).onFinishChange(function () {
+<pre><code>    gui.add(options, &#39;texture&#39;, [&#39;default&#39;, &#39;fire&#39;, &#39;wood&#39;, &#39;cloud&#39;, &#39;grass&#39;, &#39;road&#39;, &#39;brick&#39;, &#39;marble&#39;, &#39;starfield&#39;, &#39;cloudBis&#39;]).onFinishChange(function () {
+                    resetPTOptions();
                     switch (options.texture) {
                         case &quot;fire&quot;:
                             currentTexture = firePT;
+                            addPToptions(firePT, [&#39;time&#39;, &#39;alphaThreshold&#39;, &#39;speed&#39;, ]);
                             break;
                         case &quot;wood&quot;:
                             currentTexture = woodPT;
+                            addPToptions(woodPT, [&#39;ampScale&#39;, &#39;woodColor&#39;]);
                             break;
                         case &quot;cloud&quot;:
                             currentTexture = cloudPT;
+                            addPToptions(cloudPT, [&#39;skyColor&#39;, &#39;cloudColor&#39;]);
                             break;
                         case &quot;grass&quot;:
                             currentTexture = grassPT;
+                            addPToptions(grassPT, [&#39;groundColor&#39;]);
                             break;
                         case &quot;road&quot;:
                             currentTexture = roadPT;
+                            addPToptions(roadPT, [&#39;roadColor&#39;]);
                             break;
                         case &quot;brick&quot;:
                             currentTexture = brickPT;
+                            addPToptions(brickPT, [&#39;numberOfBricksHeight&#39;, &#39;numberOfBricksWidth&#39;, &#39;brickColor&#39;, &#39;jointColor&#39;]);
                             break;
                         case &quot;marble&quot;:
                             currentTexture = marblePT;
+                            addPToptions(marblePT, [&#39;numberOfTilesHeight&#39;, &#39;numberOfTilesWidth&#39;, &#39;amplitude&#39;, &#39;jointColor&#39;]);
                             break;
                         case &quot;starfield&quot;:
                             currentTexture = starfieldPT;
+                            addPToptions(starfieldPT, [&#39;saturation&#39;, &#39;distfading&#39;, &#39;darkmatter&#39;, &#39;alpha&#39;, &#39;time&#39;, &#39;beta&#39;, &#39;zoom&#39;, &#39;formuparam&#39;, &#39;stepsize&#39;, &#39;tile&#39;, &#39;brightness&#39;]);
                             break;
-                        case &quot;cloudPTBis&quot;:
+                        case &quot;cloudBis&quot;:
                             currentTexture = cloudBis;
                             break;
                         case &quot;none&quot;:
@@ -162,7 +172,15 @@ By convention we create a function named <strong>updateShaderUniforms()</strong>
                     std.diffuseTexture = currentTexture;
                     window.enableTexture(options.texture);
                 });
-</code></pre><h2><a name="launch-the-test-server" class="anchor" href="#launch-the-test-server"></a>Launch the test server</h2><p>To test your result, just execute:</p>
+</code></pre><h2><a name="optional-enable-a-graphical-interface" class="anchor" href="#optional-enable-a-graphical-interface"></a>(Optional) enable a graphical interface.</h2><p>If your procedural texture contains properties that allows the dev to customize it, you can enable an interface to change them live in the sample.</p>
+<p>To do that, you only have to add a call to the <strong>addPToptions</strong> helper function in your <strong>case</strong></p>
+<p>Your code will look like this :</p>
+<pre><code>case &quot;cloudBis&quot;:
+currentTexture = cloudBis;
+addPToptions(cloudBis, [&#39;skyColor&#39;, &#39;cloudColor&#39;]);
+break;
+</code></pre><p>The first parameter is the texture object and the second one is an array containing the list of properties you want to make editable in the sample.</p>
+<h2><a name="launch-the-test-server" class="anchor" href="#launch-the-test-server"></a>Launch the test server</h2><p>To test your result, just execute:</p>
 <pre><code>gulp webserver
 </code></pre></div></div></div><footer class="footer"><div class="footer-item"><a href="http://www.html5gamedevs.com/forum/16-babylonjs" target="_blank"><i class="fa fa-html5"></i>    Forum</a></div><div class="footer-item"><a href="https://github.com/BabylonJS/Babylon.js" target="_blank"><i class="fa fa-github"></i>    Github</a></div><div class="footer-item"><a href="https://github.com/BabylonJS/Documentation" target="_blank"><i class="fa fa-code-fork"></i>    Contribute</a></div></footer><script src="https://code.jquery.com/jquery-2.1.4.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.9/slideout.min.js"></script><script src="/js/index.js"></script><script>(function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;

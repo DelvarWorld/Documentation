@@ -161,33 +161,42 @@ var cloudBis = new BABYLON.CloudBisProceduralTexture("cloudPTBis", 256, scene);
 Finally update the UI control:
 
 ```
-gui.add(options, 'texture', ['default', 'fire', 'wood', 'cloud', 'grass', 'road', 'brick', 'marble', 'starfield', 'cloudbis']).onFinishChange(function () {
+	gui.add(options, 'texture', ['default', 'fire', 'wood', 'cloud', 'grass', 'road', 'brick', 'marble', 'starfield', 'cloudBis']).onFinishChange(function () {
+					resetPTOptions();
 					switch (options.texture) {
 						case "fire":
 							currentTexture = firePT;
+							addPToptions(firePT, ['time', 'alphaThreshold', 'speed', ]);
 							break;
 						case "wood":
 							currentTexture = woodPT;
+							addPToptions(woodPT, ['ampScale', 'woodColor']);
 							break;
 						case "cloud":
 							currentTexture = cloudPT;
+							addPToptions(cloudPT, ['skyColor', 'cloudColor']);
 							break;
 						case "grass":
 							currentTexture = grassPT;
+							addPToptions(grassPT, ['groundColor']);
 							break;
 						case "road":
 							currentTexture = roadPT;
+							addPToptions(roadPT, ['roadColor']);
 							break;
 						case "brick":
 							currentTexture = brickPT;
+							addPToptions(brickPT, ['numberOfBricksHeight', 'numberOfBricksWidth', 'brickColor', 'jointColor']);
 							break;
 						case "marble":
 							currentTexture = marblePT;
+							addPToptions(marblePT, ['numberOfTilesHeight', 'numberOfTilesWidth', 'amplitude', 'jointColor']);
 							break;
 						case "starfield":
 							currentTexture = starfieldPT;
+							addPToptions(starfieldPT, ['saturation', 'distfading', 'darkmatter', 'alpha', 'time', 'beta', 'zoom', 'formuparam', 'stepsize', 'tile', 'brightness']);
 							break;
-						case "cloudPTBis":
+						case "cloudBis":
 							currentTexture = cloudBis;
 							break;
 						case "none":
@@ -199,8 +208,24 @@ gui.add(options, 'texture', ['default', 'fire', 'wood', 'cloud', 'grass', 'road'
 					std.diffuseTexture = currentTexture;
 					window.enableTexture(options.texture);
 				});
+```
+
+## (Optional) enable a graphical interface. 
+
+If your procedural texture contains properties that allows the dev to customize it, you can enable an interface to change them live in the sample.
+
+To do that, you only have to add a call to the **addPToptions** helper function in your **case**
+
+Your code will look like this :
 
 ```
+case "cloudBis":
+currentTexture = cloudBis;
+addPToptions(cloudBis, ['skyColor', 'cloudColor']);
+break;
+```
+
+The first parameter is the texture object and the second one is an array containing the list of properties you want to make editable in the sample.
 
 ## Launch the test server
 

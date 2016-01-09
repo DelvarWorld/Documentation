@@ -550,6 +550,10 @@
         {
           "title": "Gradient",
           "filename": "Gradient"
+        },
+        {
+          "title": "Sky",
+          "filename": "Sky"
         }
       ]
     },

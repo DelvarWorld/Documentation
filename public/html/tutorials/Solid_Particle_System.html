@@ -235,7 +235,7 @@ The same thing with <code>SPS.recycleParticle(particle)</code> what is not calle
 var box = BABYLON.MeshBuilder.CreateBox(&#39;b&#39;, {}, scene);
 var SPS = new BABYLON.SolidParticleSystem(&#39;SPS&#39;, scene);
 SPS.addShape(box, 150, {positionFunction: myBuilder)}; // myBuilder will be called for each of the 150 boxes
-var mesh = SPS.buildMesh(false);                       // the mest is not updatable
+var mesh = SPS.buildMesh();
 </code></pre>
 <p>In this former example, each box particle will have its own rotation, position, scale and uvs set once for all at construction time. As the mesh is not updatable, the particles are then not manageable with <code>setParticles()</code>.<br>You&#39;ve got here a real immutable mesh. You can still translate it, rotate it, scale it globally as any other mesh until you freeze its World Matrix.<br>Example : a town with 80 000 buildings <a href="http://www.babylonjs-playground.com/#2FPT1A#36">http://www.babylonjs-playground.com/#2FPT1A#36</a>  </p>
 <p>Note that this feature (modifying the mesh at construction time) is not directly related to the mesh <code>updatable</code> parameter. This means you can use it even with a default <em>updatable</em> mesh although it is easier to set the particles the classical war with <code>setParticles()</code>.  </p>
@@ -247,7 +247,7 @@ var mesh = SPS.buildMesh(false);                       // the mest is not updata
   vertex.x *= Math.random() + 1;
 };
 SPS.addShape(box, 150, {vertexFunction: myVertexFunction}); // the 150 boxes will have their vertices moved randomly
-SPS.buildMesh(false);
+SPS.buildMesh();
 </code></pre>
 <p>Of course you can use the both properties together :</p>
 <pre><code class="lang-javascript">SPS.addShape(box, 150, {vertexFunction: myVertexFunction, positionFunction: myPositionFunction});

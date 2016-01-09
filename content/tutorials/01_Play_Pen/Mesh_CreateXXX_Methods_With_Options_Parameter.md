@@ -433,6 +433,7 @@ shape|_(Vector3[])_  array of Vector3, the shape you want to turn **REQUIRED** |
 radius|_(number)_  the value to radius of the lathe|1
 tessellation|_(number)_  the number of iteration around the lathe|64
 arc|_(number)_ ratio of the circumference between 0 and 1|1
+cap|_(number)_ tube cap : NO_CAP, CAP_START, CAP_END, CAP_ALL|NO_CAP
 closed|_(boolean)_ to open/close the lathe circumference, should be set to `false` when used with `arc`|true
 updatable|_(boolean)_ true if the mesh is updatable|false
 sideOrientation|_(number)_ side orientation|DEFAULTSIDE
@@ -443,4 +444,4 @@ sideOrientation|_(number)_ side orientation|DEFAULTSIDE
 <br/>
 <br/>
   
-_edition in progress_
+

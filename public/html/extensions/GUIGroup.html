@@ -1,16 +1,19 @@
-<!DOCTYPE html><html><head lang="en"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BabylonJS Documentation</title><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" href="/css/libs/slideout.css"><link rel="stylesheet" href="/css/libs/highlight/github.css"><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.3/css/perfect-scrollbar.min.css"><link rel="stylesheet" href="/css/main.css"></head><body><nav id="menu"></nav><nav class="nav-main"><!-- Hamburger menu : displayed only in small screens--><i id="mobilemenu" class="fa fa-bars"></i><!-- this button only shows on mobile version of a "class" page--><div class="banner"><div class="menu"><div id="home" class="do-not-hover"><a href="/">Babylon.js | DOCUMENTATION</a></div><div id="whatsnew" class="item"><a href="/whats-new">What's new</a></div><div id="general" class="item"><a href="/generals">General</a></div><div id="tutorials" class="item"><a href="/tutorials">Tutorials</a></div><div id="exporters" class="item"><a href="/exporters">Exporters</a></div><div id="extensions" class="item active"><a href="/extensions">Extensions</a></div><div id="classes" class="item"><a href="/classes">Classes</a></div><div id="playground" class="item"><a href="/playground">Playground</a></div></div><div class="more"><div class="searchbar"><form method="get" action="/search"><input type="text" name="q" placeholder="Search..."><button type="submit"><i class="fa fa-search"></i></button></form></div><div class="forward"><div><a href="http://www.babylonjs.com" target="_blank">babylonjs.com<i class="fa fa-play"></i></a></div></div></div></div></nav><div id="wrapper"><div class="statics-banner"><h1>extensions</h1></div><div class="horizontal-separator"></div><div class="static-content"><h1>GUIGroup</h1><br><div class="contentTable"><div class="tocHeader"><span class="tocTitle"><i class="tocIcon fa fa-book"></i>Table of contents</span><span class="tocToggle"><i class="fa fa-arrow-up"></i></span></div><div class="tocContent"><pre><code>* [Parameters](#parameters)
-</code></pre><ul>
-<li><a href="#options">Options</a></li>
+<!DOCTYPE html><html><head lang="en"><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BabylonJS Documentation</title><link rel="shortcut icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"><link rel="stylesheet" href="/css/libs/slideout.css"><link rel="stylesheet" href="/css/libs/highlight/github.css"><link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.3/css/perfect-scrollbar.min.css"><link rel="stylesheet" href="/css/main.css"></head><body><nav id="menu"></nav><nav class="nav-main"><!-- Hamburger menu : displayed only in small screens--><i id="mobilemenu" class="fa fa-bars"></i><!-- this button only shows on mobile version of a "class" page--><div class="banner"><div class="menu"><div id="home" class="do-not-hover"><a href="/">Babylon.js | DOCUMENTATION</a></div><div id="whatsnew" class="item"><a href="/whats-new">What's new</a></div><div id="general" class="item"><a href="/generals">General</a></div><div id="tutorials" class="item"><a href="/tutorials">Tutorials</a></div><div id="exporters" class="item"><a href="/exporters">Exporters</a></div><div id="extensions" class="item active"><a href="/extensions">Extensions</a></div><div id="classes" class="item"><a href="/classes">Classes</a></div><div id="playground" class="item"><a href="/playground">Playground</a></div></div><div class="more"><div class="searchbar"><form method="get" action="/search"><input type="text" name="q" placeholder="Search..."><button type="submit"><i class="fa fa-search"></i></button></form></div><div class="forward"><div><a href="http://www.babylonjs.com" target="_blank">babylonjs.com<i class="fa fa-play"></i></a></div></div></div></div></nav><div id="wrapper"><div class="statics-banner"><h1>extensions</h1></div><div class="horizontal-separator"></div><div class="static-content"><h1>GUIGroup</h1><br><div class="contentTable"><div class="tocHeader"><span class="tocTitle"><i class="tocIcon fa fa-book"></i>Table of contents</span><span class="tocToggle"><i class="fa fa-arrow-up"></i></span></div><div class="tocContent"><ul>
+<li><a href="#parameters">Parameters</a></li>
+<li><a href="#members">Members</a><ul>
+<li><a href="#name-string">name : string</a></li>
+<li><a href="#elements-arrayguiobjecthttpdocbabylonjscompagephpp25104">elements : Array<a href="[GUIObject](http://doc.babylonjs.com/page.php?p=25104)">[GUIObject](http://doc.babylonjs.com/page.php?p=25104)</a></a></li>
+</ul>
+</li>
 <li><a href="#methods">Methods</a><ul>
-<li><a href="#addguielement-void">dd(GUIElement) → void</a></li>
-<li><a href="#setvisiblebool-void">setVisible(bool) → void</a></li>
-<li><a href="#isvisible-void">isVisible() → void</a></li>
-<li><a href="#dispose-void">dispose() → void</a></li>
+<li><a href="#addguiobjecthttpdocbabylonjscompagephpp25104-void">dd(<a href="http://doc.babylonjs.com/page.php?p=25104">GUIObject</a>) → void</a></li>
+<li><a href="#setvisibleboolean-void">setVisible(boolean) → void</a></li>
 </ul>
 </li>
 </ul>
-</div></div><div id="staticContent"><h2><a name="new-a-hrefguigroupaid-options-guimanager" class="anchor" href="#new-guigroupid-options-guimanager"></a>new <a href="#">GUIGroup</a>(id, options, guimanager)</h2><p>Creates a new GUIGroup</p>
-<h4><a name="parameters" class="anchor" href="#parameters"></a>Parameters</h4><table>
+</div></div><div id="staticContent"><p>new <a href="http://doc.babylonjs.com/page.php?p=25106">GUIGroup</a>(name, guiSystem)</p>
+<p>Represents a group of GUIObject. Can be used to easily retrieve GUIObjects grouped by functionality.</p>
+<h2><a name="parameters" class="anchor" href="#parameters"></a>Parameters</h2><table>
 <thead>
 <tr>
 <th>Name</th>
@@ -20,31 +23,23 @@
 </thead>
 <tbody>
 <tr>
-<td><strong>name</strong></td>
+<td>name</td>
 <td>string</td>
-<td>The name element</td>
+<td>The name of the group</td>
 </tr>
 <tr>
-<td><strong>options</strong></td>
-<td>json</td>
-<td>Options of element</td>
-</tr>
-<tr>
-<td><strong>guimanager</strong></td>
-<td>GUIManager</td>
-<td>The gui manager</td>
+<td>guiSystem</td>
+<td>GUISystem</td>
+<td>The GUI system</td>
 </tr>
 </tbody>
 </table>
-<hr>
-<h2><a name="options" class="anchor" href="#options"></a>Options</h2><ul>
-<li><strong>x</strong>: position left of group (in pixel)</li>
-<li><strong>y</strong>: position top of group (in pixel)</li>
-</ul>
-<h2><a name="methods" class="anchor" href="#methods"></a>Methods</h2><h3><a name="addguielement-void" class="anchor" href="#addguielement-void"></a>add(GUIElement) → void</h3><p>add element in the GUIGroup</p>
-<h3><a name="setvisiblebool-void" class="anchor" href="#setvisiblebool-void"></a>setVisible(bool) → void</h3><p>Set this GUI element to visible or invisible</p>
-<h3><a name="isvisible-void" class="anchor" href="#isvisible-void"></a>isVisible() → void</h3><p>Returns element if is visible or no</p>
-<h3><a name="dispose-void" class="anchor" href="#dispose-void"></a>dispose() → void</h3><p>Dispose the GUIGroup, and delete all elements of group.</p>
+<h2><a name="members" class="anchor" href="#members"></a>Members</h2><p>guiSystem : <a href="http://doc.babylonjs.com/page.php?p=25103">GUISystem</a>
+The GUI system</p>
+<h3><a name="name-string" class="anchor" href="#name-string"></a>name : string</h3><p>The group name</p>
+<h3><a name="elements-arraya-hrefguiobjecthttpdocbabylonjscompagephpp25104guiobjecthttpdocbabylonjscompagephpp25104a" class="anchor" href="#elements-arrayguiobjecthttpdocbabylonjscompagephpp25104"></a>elements : Array<a href="[GUIObject](http://doc.babylonjs.com/page.php?p=25104)">[GUIObject](http://doc.babylonjs.com/page.php?p=25104)</a></h3><p>All GUIObjects of this group</p>
+<h2><a name="methods" class="anchor" href="#methods"></a>Methods</h2><h3><a name="adda-hrefhttpdocbabylonjscompagephpp25104guiobjecta-void" class="anchor" href="#addguiobjecthttpdocbabylonjscompagephpp25104-void"></a>add(<a href="http://doc.babylonjs.com/page.php?p=25104">GUIObject</a>) → void</h3><p>Add a GUIObject to this group</p>
+<h3><a name="setvisibleboolean-void" class="anchor" href="#setvisibleboolean-void"></a>setVisible(boolean) → void</h3><p>Set all elements of this group as visible (or not)</p>
 </div></div></div><footer class="footer"><div class="footer-item"><a href="http://www.html5gamedevs.com/forum/16-babylonjs" target="_blank"><i class="fa fa-html5"></i>    Forum</a></div><div class="footer-item"><a href="https://github.com/BabylonJS/Babylon.js" target="_blank"><i class="fa fa-github"></i>    Github</a></div><div class="footer-item"><a href="https://github.com/BabylonJS/Documentation" target="_blank"><i class="fa fa-code-fork"></i>    Contribute</a></div></footer><script src="https://code.jquery.com/jquery-2.1.4.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/0.1.9/slideout.min.js"></script><script src="/js/index.js"></script><script>(function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
     i[r] = i[r] || function () {
@@ -59,9 +54,6 @@
 })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 ga('create', 'UA-66146410-1', 'auto');
 ga('send', 'pageview');</script><!-- HIGHLIGHT JS--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/languages/javascript.min.js"></script><script src="/js/static.js"></script><script>$('code').each(function(){
-    $(this).text($(this).text().replace(/&nbsp;/gi, ''));
-});
-hljs.initHighlightingOnLoad();</script></body></html>w');</script><!-- HIGHLIGHT JS--><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/languages/javascript.min.js"></script><script src="/js/static.js"></script><script>$('code').each(function(){
     $(this).text($(this).text().replace(/&nbsp;/gi, ''));
 });
 hljs.initHighlightingOnLoad();</script></body></html>

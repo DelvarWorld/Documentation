@@ -279,7 +279,7 @@ var myBuilder = function(particle, i, s) {
 var box = BABYLON.MeshBuilder.CreateBox('b', {}, scene);
 var SPS = new BABYLON.SolidParticleSystem('SPS', scene);
 SPS.addShape(box, 150, {positionFunction: myBuilder)}; // myBuilder will be called for each of the 150 boxes
-var mesh = SPS.buildMesh(false);                       // the mest is not updatable
+var mesh = SPS.buildMesh();                       
 ```
 In this former example, each box particle will have its own rotation, position, scale and uvs set once for all at construction time. As the mesh is not updatable, the particles are then not manageable with `setParticles()`.  
 You've got here a real immutable mesh. You can still translate it, rotate it, scale it globally as any other mesh until you freeze its World Matrix.  
@@ -300,7 +300,7 @@ var myVertexFunction = function(particle, vertex, i) {
   vertex.x *= Math.random() + 1;
 };
 SPS.addShape(box, 150, {vertexFunction: myVertexFunction}); // the 150 boxes will have their vertices moved randomly
-SPS.buildMesh(false);
+SPS.buildMesh();
 ```
 Of course you can use the both properties together :
 ```javascript
